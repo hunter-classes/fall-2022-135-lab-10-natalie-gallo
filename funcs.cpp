@@ -42,3 +42,20 @@ int minutesUntil(Time earlier, Time later){
 }
 
 
+Time addMinutes(Time time0, int min){
+  int minutes = minutesSinceMidnight(time0);
+
+  minutes = minutes + min;
+
+  int hours = minutes / 60;
+
+  minutes = minutes % 60;
+
+  Time newTime;
+
+  newTime.h = hours;
+  newTime.m = minutes;
+
+  return newTime;
+}
+

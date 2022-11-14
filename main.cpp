@@ -13,6 +13,9 @@ int main()
   std::cout << "Interval between them is " << minutesUntil(time_1, time_2) << " minutes. \n";
 
   //TASK B
+  printTime(addMinutes({8, 10}, 75));
+
+  //TASK C
   
   return 0;
 }
