@@ -1,13 +1,16 @@
 #include <iostream>
+#include <string>
+using namespace std;
 #include "time.h"
-#include "move.h"
+#include "movie.h"
 #include "timeslot.h"
+#include "funcs.h"
 
 
 //LAB EXAMPLE FUNCTION
 
 void printTime(Time time) {
-    cout << time.h << ":" << time.m;
+  std::cout << time.h << ":" << time.m;
 }
 
 
@@ -41,6 +44,7 @@ int minutesUntil(Time earlier, Time later){
   return minutes;
 }
 
+//TASK B
 
 Time addMinutes(Time time0, int min){
   int minutes = minutesSinceMidnight(time0);
@@ -58,4 +62,50 @@ Time addMinutes(Time time0, int min){
 
   return newTime;
 }
+
+//TASK C
+
+std::string printMovie(Movie mv){
+  std::string movie_details;
+  std::string g;
+    switch (mv.genre) {
+        case ACTION   : g = "ACTION"; break;
+        case COMEDY   : g = "COMEDY"; break;
+        case DRAMA    : g = "DRAMA";  break;
+        case ROMANCE  : g = "ROMANCE"; break;
+        case THRILLER : g = "THRILLER"; break;
+    }
+    movie_details =  mv.title + " " + g + " (" + std::to_string(mv.duration) + " min)";
+    return movie_details;
+}
+
+std::string getTimeSlot(TimeSlot ts){
+  
+  std::string movie_details = printMovie(ts.movie);
+  
+  movie_details +=  " [starts at ";
+
+  //Replicating printTime function but I didnt want to change from void...
+  Time movie_start = ts.startTime;
+  std::string hours = std::to_string(movie_start.h);
+  std::string minutes = std::to_string(movie_start.m);
+  movie_details += hours + ":" + minutes;
+  
+  movie_details += ", ends by ";
+
+  Movie movie_playing = ts.movie;
+
+  int movie_length = movie_playing.duration; //in minutes
+
+  Time end_time = addMinutes(ts.startTime, movie_length);
+
+  hours = std::to_string(end_time.h);
+  minutes = std::to_string(end_time.m);
+  movie_details += hours + ":" + minutes;
+
+  movie_details += "]";
+
+  return movie_details;
+}
+
 
