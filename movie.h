@@ -1,4 +1,5 @@
 #pragma once
+using namespace std;
 
 enum Genre {ACTION, COMEDY, DRAMA, ROMANCE, THRILLER};
 
