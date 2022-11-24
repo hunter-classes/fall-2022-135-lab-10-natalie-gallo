@@ -9,6 +9,7 @@ using namespace std;
 int main()
 {
   //TASK A
+  cout << "\n\nTASK A \n\n";
   Time time_1 = { 10, 30 };
   Time time_2 = { 13, 40 };
 
@@ -19,6 +20,7 @@ int main()
   std::cout << "Interval between them is " << minutesUntil(time_1, time_2) << " minutes. \n";
 
   //TASK B
+  cout << "\n\nTASK B \n\n";
   Time time_3 = { 8, 10 };
   Time adjusted_time = addMinutes(time_3, 75);
   printTime(adjusted_time);
@@ -31,11 +33,25 @@ int main()
   TimeSlot morning = {movie1, {9, 15}};  
   TimeSlot daytime = {movie2, {12, 15}}; 
   TimeSlot evening = {movie2, {16, 45}};
-
+  cout << "\n\nTASK C \n\n";
   std::cout << getTimeSlot(morning) << endl;
   std::cout << getTimeSlot(daytime) << endl;
   std::cout << getTimeSlot(evening) << endl;
   //add two more slots
+
+  //TASK D
+  TimeSlot scheduledMovie = scheduleAfter(daytime, movie2);
+  cout << "\n\nTASK D \n\n";
+  std::cout << getTimeSlot(daytime) << std::endl;
+  std::cout << getTimeSlot(scheduledMovie) << std::endl;
+
+  //TASK E
+  cout << "\n\nTASK E \n\n";
+  Movie movie3 = {"Us", THRILLER, 120};
+  TimeSlot overlap_ex = {movie3, {15, 15}};
+  bool overlap = timeOverlap(daytime, overlap_ex);
+  cout << "'Black Panther' at 12:15 and 'Us' at 3:15 (15:15). Overlap?\n";
+  cout << std::boolalpha << overlap << endl;
   
   return 0;
 }

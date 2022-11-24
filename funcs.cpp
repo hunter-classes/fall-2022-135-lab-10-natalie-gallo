@@ -108,4 +108,35 @@ std::string getTimeSlot(TimeSlot ts){
   return movie_details;
 }
 
+//TASK D
 
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
+  Time newTime = addMinutes(ts.startTime, ts.movie.duration);
+  TimeSlot newMovie;
+
+  newMovie.movie = nextMovie;
+  newMovie.startTime = newTime;
+
+  return newMovie;
+}
+
+//TASK E
+
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
+  //use minutesUntil to check which ts is earlier
+  //find how long the interval is btwn starttimes of each
+  //if movie duration > interval^ -> they overlap
+  int interval = minutesUntil(ts1.startTime, ts2.startTime);
+
+  bool overlap = false;
+
+  int movie_duration = ts1.movie.duration;
+
+  if (movie_duration > interval){
+    overlap = true;
+  } else {
+    overlap = false;
+  }
+
+  return overlap;
+}
